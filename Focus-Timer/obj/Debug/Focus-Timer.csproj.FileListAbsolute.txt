@@ -1,0 +1,10 @@
+C:\Programmieren_Offline\csharp\Focus-Timer\Focus-Timer\bin\Debug\Focus-Timer.exe.config
+C:\Programmieren_Offline\csharp\Focus-Timer\Focus-Timer\bin\Debug\Focus-Timer.exe
+C:\Programmieren_Offline\csharp\Focus-Timer\Focus-Timer\bin\Debug\Focus-Timer.pdb
+C:\Programmieren_Offline\csharp\Focus-Timer\Focus-Timer\obj\Debug\Focus-Timer.csproj.AssemblyReference.cache
+C:\Programmieren_Offline\csharp\Focus-Timer\Focus-Timer\obj\Debug\Focus_Timer.Form1.resources
+C:\Programmieren_Offline\csharp\Focus-Timer\Focus-Timer\obj\Debug\Focus_Timer.Properties.Resources.resources
+C:\Programmieren_Offline\csharp\Focus-Timer\Focus-Timer\obj\Debug\Focus-Timer.csproj.GenerateResource.cache
+C:\Programmieren_Offline\csharp\Focus-Timer\Focus-Timer\obj\Debug\Focus-Timer.csproj.CoreCompileInputs.cache
+C:\Programmieren_Offline\csharp\Focus-Timer\Focus-Timer\obj\Debug\Focus-Timer.exe
+C:\Programmieren_Offline\csharp\Focus-Timer\Focus-Timer\obj\Debug\Focus-Timer.pdb
