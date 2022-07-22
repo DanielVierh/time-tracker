@@ -30,8 +30,10 @@ namespace Focus_Timer
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.lblTime = new System.Windows.Forms.Label();
+            this.lblHr = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rndPause = new System.Windows.Forms.RadioButton();
+            this.rndMeeting = new System.Windows.Forms.RadioButton();
             this.rndSonstiges = new System.Windows.Forms.RadioButton();
             this.rndOrga = new System.Windows.Forms.RadioButton();
             this.rndCoding = new System.Windows.Forms.RadioButton();
@@ -43,32 +45,36 @@ namespace Focus_Timer
             this.lblOrgaTime = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnPause = new System.Windows.Forms.Button();
-            this.rndMeeting = new System.Windows.Forms.RadioButton();
             this.btnReset = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.beendenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.einstellungenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imVordergrundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.einToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ausToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.designToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.beendenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rndPause = new System.Windows.Forms.RadioButton();
             this.lblMeetingTime = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblMin = new System.Windows.Forms.Label();
+            this.lblSec = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lblTime
+            // lblHr
             // 
-            this.lblTime.Font = new System.Drawing.Font("Consolas", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.Location = new System.Drawing.Point(98, 36);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(299, 54);
-            this.lblTime.TabIndex = 1;
-            this.lblTime.Text = "00:00:00";
-            this.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblHr.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblHr.Font = new System.Drawing.Font("Consolas", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHr.ForeColor = System.Drawing.Color.White;
+            this.lblHr.Location = new System.Drawing.Point(124, 37);
+            this.lblHr.Name = "lblHr";
+            this.lblHr.Size = new System.Drawing.Size(65, 54);
+            this.lblHr.TabIndex = 1;
+            this.lblHr.Text = "00";
+            this.lblHr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox1
             // 
@@ -78,6 +84,8 @@ namespace Focus_Timer
             this.groupBox1.Controls.Add(this.rndOrga);
             this.groupBox1.Controls.Add(this.rndCoding);
             this.groupBox1.Controls.Add(this.rdbLerning);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.Yellow;
             this.groupBox1.Location = new System.Drawing.Point(19, 144);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(454, 80);
@@ -85,53 +93,88 @@ namespace Focus_Timer
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Welcher Zeitaufwand";
             // 
+            // rndPause
+            // 
+            this.rndPause.AutoSize = true;
+            this.rndPause.ForeColor = System.Drawing.Color.White;
+            this.rndPause.Location = new System.Drawing.Point(342, 22);
+            this.rndPause.Name = "rndPause";
+            this.rndPause.Size = new System.Drawing.Size(60, 17);
+            this.rndPause.TabIndex = 15;
+            this.rndPause.TabStop = true;
+            this.rndPause.Text = "Pause";
+            this.rndPause.UseVisualStyleBackColor = true;
+            this.rndPause.CheckedChanged += new System.EventHandler(this.rndPause_CheckedChanged);
+            // 
+            // rndMeeting
+            // 
+            this.rndMeeting.AutoSize = true;
+            this.rndMeeting.ForeColor = System.Drawing.Color.White;
+            this.rndMeeting.Location = new System.Drawing.Point(342, 51);
+            this.rndMeeting.Name = "rndMeeting";
+            this.rndMeeting.Size = new System.Drawing.Size(70, 17);
+            this.rndMeeting.TabIndex = 14;
+            this.rndMeeting.TabStop = true;
+            this.rndMeeting.Text = "Meeting";
+            this.rndMeeting.UseVisualStyleBackColor = true;
+            this.rndMeeting.CheckedChanged += new System.EventHandler(this.rndMeeting_CheckedChanged);
+            // 
             // rndSonstiges
             // 
             this.rndSonstiges.AutoSize = true;
-            this.rndSonstiges.Location = new System.Drawing.Point(142, 48);
+            this.rndSonstiges.ForeColor = System.Drawing.Color.White;
+            this.rndSonstiges.Location = new System.Drawing.Point(188, 51);
             this.rndSonstiges.Name = "rndSonstiges";
-            this.rndSonstiges.Size = new System.Drawing.Size(71, 17);
+            this.rndSonstiges.Size = new System.Drawing.Size(80, 17);
             this.rndSonstiges.TabIndex = 13;
             this.rndSonstiges.TabStop = true;
             this.rndSonstiges.Text = "Sonstiges";
             this.rndSonstiges.UseVisualStyleBackColor = true;
+            this.rndSonstiges.CheckedChanged += new System.EventHandler(this.rndSonstiges_CheckedChanged);
             // 
             // rndOrga
             // 
             this.rndOrga.AutoSize = true;
-            this.rndOrga.Location = new System.Drawing.Point(142, 19);
+            this.rndOrga.ForeColor = System.Drawing.Color.White;
+            this.rndOrga.Location = new System.Drawing.Point(188, 22);
             this.rndOrga.Name = "rndOrga";
-            this.rndOrga.Size = new System.Drawing.Size(84, 17);
+            this.rndOrga.Size = new System.Drawing.Size(96, 17);
             this.rndOrga.TabIndex = 12;
             this.rndOrga.TabStop = true;
             this.rndOrga.Text = "Organisieren";
             this.rndOrga.UseVisualStyleBackColor = true;
+            this.rndOrga.CheckedChanged += new System.EventHandler(this.rndOrga_CheckedChanged);
             // 
             // rndCoding
             // 
             this.rndCoding.AutoSize = true;
-            this.rndCoding.Location = new System.Drawing.Point(13, 48);
+            this.rndCoding.ForeColor = System.Drawing.Color.White;
+            this.rndCoding.Location = new System.Drawing.Point(59, 51);
             this.rndCoding.Name = "rndCoding";
-            this.rndCoding.Size = new System.Drawing.Size(56, 17);
+            this.rndCoding.Size = new System.Drawing.Size(61, 17);
             this.rndCoding.TabIndex = 11;
             this.rndCoding.TabStop = true;
             this.rndCoding.Text = "Coden";
             this.rndCoding.UseVisualStyleBackColor = true;
+            this.rndCoding.CheckedChanged += new System.EventHandler(this.rndCoding_CheckedChanged);
             // 
             // rdbLerning
             // 
             this.rdbLerning.AutoSize = true;
-            this.rdbLerning.Location = new System.Drawing.Point(13, 19);
+            this.rdbLerning.ForeColor = System.Drawing.Color.White;
+            this.rdbLerning.Location = new System.Drawing.Point(59, 22);
             this.rdbLerning.Name = "rdbLerning";
-            this.rdbLerning.Size = new System.Drawing.Size(58, 17);
+            this.rdbLerning.Size = new System.Drawing.Size(64, 17);
             this.rdbLerning.TabIndex = 10;
             this.rdbLerning.TabStop = true;
             this.rdbLerning.Text = "Lernen";
             this.rdbLerning.UseVisualStyleBackColor = true;
+            this.rdbLerning.CheckedChanged += new System.EventHandler(this.rdbLerning_CheckedChanged);
             // 
             // lblLerningTime
             // 
-            this.lblLerningTime.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLerningTime.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLerningTime.ForeColor = System.Drawing.Color.White;
             this.lblLerningTime.Location = new System.Drawing.Point(4, 229);
             this.lblLerningTime.Name = "lblLerningTime";
             this.lblLerningTime.Size = new System.Drawing.Size(223, 39);
@@ -141,7 +184,8 @@ namespace Focus_Timer
             // 
             // lblSonstigesTime
             // 
-            this.lblSonstigesTime.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSonstigesTime.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSonstigesTime.ForeColor = System.Drawing.Color.White;
             this.lblSonstigesTime.Location = new System.Drawing.Point(250, 223);
             this.lblSonstigesTime.Name = "lblSonstigesTime";
             this.lblSonstigesTime.Size = new System.Drawing.Size(223, 39);
@@ -151,7 +195,8 @@ namespace Focus_Timer
             // 
             // lblPauseTime
             // 
-            this.lblPauseTime.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPauseTime.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPauseTime.ForeColor = System.Drawing.Color.White;
             this.lblPauseTime.Location = new System.Drawing.Point(250, 260);
             this.lblPauseTime.Name = "lblPauseTime";
             this.lblPauseTime.Size = new System.Drawing.Size(223, 39);
@@ -161,7 +206,8 @@ namespace Focus_Timer
             // 
             // lblCodingTime
             // 
-            this.lblCodingTime.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodingTime.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodingTime.ForeColor = System.Drawing.Color.White;
             this.lblCodingTime.Location = new System.Drawing.Point(4, 264);
             this.lblCodingTime.Name = "lblCodingTime";
             this.lblCodingTime.Size = new System.Drawing.Size(223, 39);
@@ -171,7 +217,8 @@ namespace Focus_Timer
             // 
             // lblOrgaTime
             // 
-            this.lblOrgaTime.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOrgaTime.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOrgaTime.ForeColor = System.Drawing.Color.White;
             this.lblOrgaTime.Location = new System.Drawing.Point(3, 299);
             this.lblOrgaTime.Name = "lblOrgaTime";
             this.lblOrgaTime.Size = new System.Drawing.Size(223, 39);
@@ -181,12 +228,14 @@ namespace Focus_Timer
             // 
             // btnStart
             // 
+            this.btnStart.BackColor = System.Drawing.Color.Green;
+            this.btnStart.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnStart.Location = new System.Drawing.Point(134, 96);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 8;
             this.btnStart.Text = "Start";
-            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.UseVisualStyleBackColor = false;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // btnPause
@@ -197,29 +246,24 @@ namespace Focus_Timer
             this.btnPause.TabIndex = 9;
             this.btnPause.Text = "Pause";
             this.btnPause.UseVisualStyleBackColor = true;
-            // 
-            // rndMeeting
-            // 
-            this.rndMeeting.AutoSize = true;
-            this.rndMeeting.Location = new System.Drawing.Point(296, 48);
-            this.rndMeeting.Name = "rndMeeting";
-            this.rndMeeting.Size = new System.Drawing.Size(63, 17);
-            this.rndMeeting.TabIndex = 14;
-            this.rndMeeting.TabStop = true;
-            this.rndMeeting.Text = "Meeting";
-            this.rndMeeting.UseVisualStyleBackColor = true;
+            this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
             // 
             // btnReset
             // 
+            this.btnReset.BackColor = System.Drawing.Color.Maroon;
+            this.btnReset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnReset.Location = new System.Drawing.Point(403, 27);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.TabIndex = 10;
             this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.SlateGray;
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dateiToolStripMenuItem,
             this.einstellungenToolStripMenuItem});
@@ -229,13 +273,27 @@ namespace Focus_Timer
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // dateiToolStripMenuItem
+            // 
+            this.dateiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.beendenToolStripMenuItem});
+            this.dateiToolStripMenuItem.Name = "dateiToolStripMenuItem";
+            this.dateiToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.dateiToolStripMenuItem.Text = "Datei";
+            // 
+            // beendenToolStripMenuItem
+            // 
+            this.beendenToolStripMenuItem.Name = "beendenToolStripMenuItem";
+            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.beendenToolStripMenuItem.Text = "Beenden";
+            // 
             // einstellungenToolStripMenuItem
             // 
             this.einstellungenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.imVordergrundToolStripMenuItem,
             this.designToolStripMenuItem});
             this.einstellungenToolStripMenuItem.Name = "einstellungenToolStripMenuItem";
-            this.einstellungenToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
+            this.einstellungenToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
             this.einstellungenToolStripMenuItem.Text = "Einstellungen";
             // 
             // imVordergrundToolStripMenuItem
@@ -244,55 +302,31 @@ namespace Focus_Timer
             this.einToolStripMenuItem,
             this.ausToolStripMenuItem});
             this.imVordergrundToolStripMenuItem.Name = "imVordergrundToolStripMenuItem";
-            this.imVordergrundToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.imVordergrundToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.imVordergrundToolStripMenuItem.Text = "Im Vordergrund";
             // 
             // einToolStripMenuItem
             // 
             this.einToolStripMenuItem.Name = "einToolStripMenuItem";
-            this.einToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.einToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
             this.einToolStripMenuItem.Text = "Ein";
             // 
             // ausToolStripMenuItem
             // 
             this.ausToolStripMenuItem.Name = "ausToolStripMenuItem";
-            this.ausToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ausToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
             this.ausToolStripMenuItem.Text = "Aus";
             // 
             // designToolStripMenuItem
             // 
             this.designToolStripMenuItem.Name = "designToolStripMenuItem";
-            this.designToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.designToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.designToolStripMenuItem.Text = "Design";
-            // 
-            // dateiToolStripMenuItem
-            // 
-            this.dateiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.beendenToolStripMenuItem});
-            this.dateiToolStripMenuItem.Name = "dateiToolStripMenuItem";
-            this.dateiToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
-            this.dateiToolStripMenuItem.Text = "Datei";
-            // 
-            // beendenToolStripMenuItem
-            // 
-            this.beendenToolStripMenuItem.Name = "beendenToolStripMenuItem";
-            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.beendenToolStripMenuItem.Text = "Beenden";
-            // 
-            // rndPause
-            // 
-            this.rndPause.AutoSize = true;
-            this.rndPause.Location = new System.Drawing.Point(296, 19);
-            this.rndPause.Name = "rndPause";
-            this.rndPause.Size = new System.Drawing.Size(55, 17);
-            this.rndPause.TabIndex = 15;
-            this.rndPause.TabStop = true;
-            this.rndPause.Text = "Pause";
-            this.rndPause.UseVisualStyleBackColor = true;
             // 
             // lblMeetingTime
             // 
-            this.lblMeetingTime.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMeetingTime.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMeetingTime.ForeColor = System.Drawing.Color.White;
             this.lblMeetingTime.Location = new System.Drawing.Point(250, 299);
             this.lblMeetingTime.Name = "lblMeetingTime";
             this.lblMeetingTime.Size = new System.Drawing.Size(223, 39);
@@ -302,13 +336,68 @@ namespace Focus_Timer
             // 
             // timer1
             // 
+            this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lblMin
+            // 
+            this.lblMin.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblMin.Font = new System.Drawing.Font("Consolas", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMin.ForeColor = System.Drawing.Color.White;
+            this.lblMin.Location = new System.Drawing.Point(216, 37);
+            this.lblMin.Name = "lblMin";
+            this.lblMin.Size = new System.Drawing.Size(65, 54);
+            this.lblMin.TabIndex = 13;
+            this.lblMin.Text = "00";
+            this.lblMin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblSec
+            // 
+            this.lblSec.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblSec.Font = new System.Drawing.Font("Consolas", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSec.ForeColor = System.Drawing.Color.White;
+            this.lblSec.Location = new System.Drawing.Point(308, 37);
+            this.lblSec.Name = "lblSec";
+            this.lblSec.Size = new System.Drawing.Size(65, 54);
+            this.lblSec.TabIndex = 14;
+            this.lblSec.Text = "00";
+            this.lblSec.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Consolas", 26.25F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(281, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(27, 54);
+            this.label1.TabIndex = 15;
+            this.label1.Text = ":";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Consolas", 26.25F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(189, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(27, 54);
+            this.label2.TabIndex = 16;
+            this.label2.Text = ":";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.RoyalBlue;
             this.ClientSize = new System.Drawing.Size(485, 347);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblSec);
+            this.Controls.Add(this.lblMin);
             this.Controls.Add(this.lblMeetingTime);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnPause);
@@ -319,10 +408,11 @@ namespace Focus_Timer
             this.Controls.Add(this.lblSonstigesTime);
             this.Controls.Add(this.lblLerningTime);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lblTime);
+            this.Controls.Add(this.lblHr);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
+            this.Opacity = 0.9D;
             this.ShowIcon = false;
             this.Text = "Focus Timer";
             this.TopMost = true;
@@ -337,7 +427,7 @@ namespace Focus_Timer
         }
 
         #endregion
-        private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.Label lblHr;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblLerningTime;
         private System.Windows.Forms.Label lblSonstigesTime;
@@ -363,6 +453,10 @@ namespace Focus_Timer
         private System.Windows.Forms.RadioButton rndPause;
         private System.Windows.Forms.Label lblMeetingTime;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lblMin;
+        private System.Windows.Forms.Label lblSec;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
