@@ -61,6 +61,11 @@ namespace Focus_Timer
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnInitReset = new System.Windows.Forms.Button();
+            this.verkleinernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kleinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.großToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kleinToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.großToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -70,12 +75,13 @@ namespace Focus_Timer
             this.lblHr.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblHr.Font = new System.Drawing.Font("Consolas", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHr.ForeColor = System.Drawing.Color.White;
-            this.lblHr.Location = new System.Drawing.Point(124, 37);
+            this.lblHr.Location = new System.Drawing.Point(124, 42);
             this.lblHr.Name = "lblHr";
             this.lblHr.Size = new System.Drawing.Size(65, 54);
             this.lblHr.TabIndex = 1;
             this.lblHr.Text = "00";
             this.lblHr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblHr.Click += new System.EventHandler(this.lblHr_Click);
             // 
             // groupBox1
             // 
@@ -231,7 +237,7 @@ namespace Focus_Timer
             // 
             this.btnStart.BackColor = System.Drawing.Color.Green;
             this.btnStart.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnStart.Location = new System.Drawing.Point(134, 96);
+            this.btnStart.Location = new System.Drawing.Point(134, 101);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 8;
@@ -241,7 +247,7 @@ namespace Focus_Timer
             // 
             // btnPause
             // 
-            this.btnPause.Location = new System.Drawing.Point(280, 97);
+            this.btnPause.Location = new System.Drawing.Point(280, 102);
             this.btnPause.Name = "btnPause";
             this.btnPause.Size = new System.Drawing.Size(75, 23);
             this.btnPause.TabIndex = 9;
@@ -268,7 +274,9 @@ namespace Focus_Timer
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dateiToolStripMenuItem,
-            this.einstellungenToolStripMenuItem});
+            this.einstellungenToolStripMenuItem,
+            this.kleinToolStripMenuItem1,
+            this.großToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(485, 24);
@@ -293,7 +301,8 @@ namespace Focus_Timer
             // 
             this.einstellungenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.imVordergrundToolStripMenuItem,
-            this.designToolStripMenuItem});
+            this.designToolStripMenuItem,
+            this.verkleinernToolStripMenuItem});
             this.einstellungenToolStripMenuItem.Name = "einstellungenToolStripMenuItem";
             this.einstellungenToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
             this.einstellungenToolStripMenuItem.Text = "Einstellungen";
@@ -304,7 +313,7 @@ namespace Focus_Timer
             this.einToolStripMenuItem,
             this.ausToolStripMenuItem});
             this.imVordergrundToolStripMenuItem.Name = "imVordergrundToolStripMenuItem";
-            this.imVordergrundToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.imVordergrundToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.imVordergrundToolStripMenuItem.Text = "Im Vordergrund";
             // 
             // einToolStripMenuItem
@@ -322,7 +331,7 @@ namespace Focus_Timer
             // designToolStripMenuItem
             // 
             this.designToolStripMenuItem.Name = "designToolStripMenuItem";
-            this.designToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.designToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.designToolStripMenuItem.Text = "Design";
             // 
             // lbl_meeting
@@ -347,48 +356,52 @@ namespace Focus_Timer
             this.lblMin.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblMin.Font = new System.Drawing.Font("Consolas", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMin.ForeColor = System.Drawing.Color.White;
-            this.lblMin.Location = new System.Drawing.Point(216, 37);
+            this.lblMin.Location = new System.Drawing.Point(216, 42);
             this.lblMin.Name = "lblMin";
             this.lblMin.Size = new System.Drawing.Size(65, 54);
             this.lblMin.TabIndex = 13;
             this.lblMin.Text = "00";
             this.lblMin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblMin.Click += new System.EventHandler(this.lblMin_Click);
             // 
             // lblSec
             // 
             this.lblSec.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblSec.Font = new System.Drawing.Font("Consolas", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSec.ForeColor = System.Drawing.Color.White;
-            this.lblSec.Location = new System.Drawing.Point(308, 37);
+            this.lblSec.Location = new System.Drawing.Point(308, 42);
             this.lblSec.Name = "lblSec";
             this.lblSec.Size = new System.Drawing.Size(65, 54);
             this.lblSec.TabIndex = 14;
             this.lblSec.Text = "00";
             this.lblSec.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblSec.Click += new System.EventHandler(this.lblSec_Click);
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Consolas", 26.25F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(281, 37);
+            this.label1.Location = new System.Drawing.Point(281, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(27, 54);
             this.label1.TabIndex = 15;
             this.label1.Text = ":";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Consolas", 26.25F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(189, 37);
+            this.label2.Location = new System.Drawing.Point(189, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(27, 54);
             this.label2.TabIndex = 16;
             this.label2.Text = ":";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // btnInitReset
             // 
@@ -401,6 +414,43 @@ namespace Focus_Timer
             this.btnInitReset.Text = "Reset";
             this.btnInitReset.UseVisualStyleBackColor = false;
             this.btnInitReset.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // verkleinernToolStripMenuItem
+            // 
+            this.verkleinernToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.kleinToolStripMenuItem,
+            this.großToolStripMenuItem});
+            this.verkleinernToolStripMenuItem.Name = "verkleinernToolStripMenuItem";
+            this.verkleinernToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verkleinernToolStripMenuItem.Text = "Größe";
+            // 
+            // kleinToolStripMenuItem
+            // 
+            this.kleinToolStripMenuItem.Name = "kleinToolStripMenuItem";
+            this.kleinToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.kleinToolStripMenuItem.Text = "Klein";
+            this.kleinToolStripMenuItem.Click += new System.EventHandler(this.kleinToolStripMenuItem_Click);
+            // 
+            // großToolStripMenuItem
+            // 
+            this.großToolStripMenuItem.Name = "großToolStripMenuItem";
+            this.großToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.großToolStripMenuItem.Text = "Groß";
+            this.großToolStripMenuItem.Click += new System.EventHandler(this.großToolStripMenuItem_Click);
+            // 
+            // kleinToolStripMenuItem1
+            // 
+            this.kleinToolStripMenuItem1.Name = "kleinToolStripMenuItem1";
+            this.kleinToolStripMenuItem1.Size = new System.Drawing.Size(47, 20);
+            this.kleinToolStripMenuItem1.Text = "Klein";
+            this.kleinToolStripMenuItem1.Click += new System.EventHandler(this.kleinToolStripMenuItem1_Click);
+            // 
+            // großToolStripMenuItem1
+            // 
+            this.großToolStripMenuItem1.Name = "großToolStripMenuItem1";
+            this.großToolStripMenuItem1.Size = new System.Drawing.Size(48, 20);
+            this.großToolStripMenuItem1.Text = "Groß";
+            this.großToolStripMenuItem1.Click += new System.EventHandler(this.großToolStripMenuItem1_Click);
             // 
             // Form1
             // 
@@ -473,6 +523,11 @@ namespace Focus_Timer
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnInitReset;
+        private System.Windows.Forms.ToolStripMenuItem verkleinernToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kleinToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem großToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kleinToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem großToolStripMenuItem1;
     }
 }
 

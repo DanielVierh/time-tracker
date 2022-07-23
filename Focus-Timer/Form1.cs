@@ -16,16 +16,13 @@ namespace Focus_Timer
     {
         //##############################################################
         // Globale Variablen
-        public string currentTimeEvent = "lerning";
-        int currentTimeStartIndex;
-        public bool timerIsRunning = false;
-
         // Coding 0-2  lerning 3-5  meeting 6-8  pause 9-11  sonstiges 12-14  orga 15-17
         int[] timeEvents = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-
+        int currentTimeStartIndex;
         int timeS, timeM, timeH;
         bool isActive;
         bool resetIsVisible = false;
+        bool windowSizeIsBig = true;
 
         public Form1()
         {
@@ -104,7 +101,6 @@ namespace Focus_Timer
         {
             // Coding 0-2  lerning 3-5  meeting 6-8  pause 9-11  sonstiges 12-14  orga 15-17
             currentTimeStartIndex = 3;
-            //   currentTimeEvent = "lerning";
             unselectColor();
             rdbLerning.BackColor = Color.CadetBlue;
         }
@@ -112,45 +108,90 @@ namespace Focus_Timer
         private void rndCoding_CheckedChanged(object sender, EventArgs e)
         {
             currentTimeStartIndex = 0;
-            //currentTimeEvent = "coding";
             unselectColor();
             rndCoding.BackColor = Color.CadetBlue;
         }
 
         private void rndOrga_CheckedChanged(object sender, EventArgs e)
         {
-            // Coding 0-2  lerning 3-5  meeting 6-8  pause 9-11  sonstiges 12-14  orga 15-17
             currentTimeStartIndex = 15;
-            // currentTimeEvent = "orga";
             unselectColor();
             rndOrga.BackColor = Color.CadetBlue;
         }
 
         private void rndSonstiges_CheckedChanged(object sender, EventArgs e)
         {
-            // Coding 0-2  lerning 3-5  meeting 6-8  pause 9-11  sonstiges 12-14  orga 15-17
             currentTimeStartIndex = 12;
             unselectColor();
             rndSonstiges.BackColor = Color.CadetBlue;
-            //  currentTimeEvent = "sonstiges";
         }
 
         private void rndPause_CheckedChanged(object sender, EventArgs e)
         {
-            // Coding 0-2  lerning 3-5  meeting 6-8  pause 9-11  sonstiges 12-14  orga 15-17
             currentTimeStartIndex = 9;
-            //   currentTimeEvent = "pause";
             unselectColor();
             rndPause.BackColor = Color.CadetBlue;
         }
 
         private void rndMeeting_CheckedChanged(object sender, EventArgs e)
         {
-            // Coding 0-2  lerning 3-5  meeting 6-8  pause 9-11  sonstiges 12-14  orga 15-17
             currentTimeStartIndex = 6;
-            //   currentTimeEvent = "meeting";
             unselectColor();
             rndMeeting.BackColor = Color.CadetBlue;
+        }
+
+        private void großToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            makeWindowBig();
+        }
+
+        private void kleinToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            makeWindowSmall();
+        }
+
+        void makeWindowSmall()
+        {
+            if(windowSizeIsBig == true)
+            {
+                windowSizeIsBig = false;
+                this.lblHr.Location = new Point(this.lblHr.Location.X - 111, this.lblHr.Location.Y - 12);
+                this.label2.Location = new Point(this.label2.Location.X - 111, this.label2.Location.Y - 12);
+                this.lblMin.Location = new Point(this.lblMin.Location.X - 111, this.lblMin.Location.Y - 12);
+                this.label1.Location = new Point(this.label1.Location.X - 111, this.label1.Location.Y - 12);
+                this.lblSec.Location = new Point(this.lblSec.Location.X - 111, this.lblSec.Location.Y - 12);
+                this.btnStart.Location = new Point(this.btnStart.Location.X - 111, this.btnStart.Location.Y - 12);
+                this.btnPause.Location = new Point(this.btnPause.Location.X - 111, this.btnPause.Location.Y - 12);
+                this.Size = new Size(300, 150);
+            }
+        }
+
+        void makeWindowBig()
+        {
+            if (windowSizeIsBig == false)
+            {
+                windowSizeIsBig = true;
+                this.lblHr.Location = new Point(this.lblHr.Location.X + 111, this.lblHr.Location.Y + 12);
+                this.label2.Location = new Point(this.label2.Location.X + 111, this.label2.Location.Y + 12);
+                this.lblMin.Location = new Point(this.lblMin.Location.X + 111, this.lblMin.Location.Y + 12);
+                this.label1.Location = new Point(this.label1.Location.X + 111, this.label1.Location.Y + 12);
+                this.lblSec.Location = new Point(this.lblSec.Location.X + 111, this.lblSec.Location.Y + 12);
+                this.btnStart.Location = new Point(this.btnStart.Location.X + 111, this.btnStart.Location.Y + 12);
+                this.btnPause.Location = new Point(this.btnPause.Location.X + 111, this.btnPause.Location.Y + 12);
+                this.Size = new Size(501, 386);
+            }
+        }
+
+
+
+        private void kleinToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            makeWindowSmall();
+        }
+
+        private void großToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            makeWindowBig();
         }
 
 
@@ -174,7 +215,7 @@ namespace Focus_Timer
                     }
                 }
 
-                // Array Incrementierung vom current event timer
+                // Array Incrementierung vom current event timer z.B. Coding, lernen etc
                 timeEvents[currentTimeStartIndex] += 1;
                 if(timeEvents[currentTimeStartIndex] >= 60)
                 {
@@ -217,6 +258,43 @@ namespace Focus_Timer
             lbl_pause.Text = "Pause: " + String.Format("{0:00}", timeEvents[11]) + ":" + String.Format("{0:00}", timeEvents[10]) + ":" + String.Format("{0:00}", timeEvents[9]);
             lbl_orga.Text = "Orga: " + String.Format("{0:00}", timeEvents[17]) + ":" + String.Format("{0:00}", timeEvents[16]) + ":" + String.Format("{0:00}", timeEvents[15]);
             lbl_sonstiges.Text = "Sonstiges: " + String.Format("{0:00}", timeEvents[14]) + ":" + String.Format("{0:00}", timeEvents[13]) + ":" + String.Format("{0:00}", timeEvents[12]);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private void lblHr_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblSec_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblMin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
 
 
