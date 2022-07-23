@@ -14,22 +14,37 @@ namespace Focus_Timer
 
     public partial class Form1 : Form
     {
-        public int codingTime = 0;
-        public int lerningTime = 0;
-        public int meetingTime = 0;
-        public int orgaTime = 0;
-        public int sonstigesTime = 0;
-        public int pauseTime = 0;
-        public string currentTimeEvent = "Lernen";
+        //##############################################################
+        // Globale Variablen
+        public string currentTimeEvent = "lerning";
+        int currentTimeStartIndex;
         public bool timerIsRunning = false;
+
+        // Coding 0-2  lerning 3-5  meeting 6-8  pause 9-11  sonstiges 12-14  orga 15-17
+        int[] timeEvents = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
         int timeS, timeM, timeH;
         bool isActive;
+        bool resetIsVisible = false;
 
         public Form1()
         {
             InitializeComponent();
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(resetIsVisible == false)
+            {
+                btnReset.Visible = true;
+                resetIsVisible = true;
+            }
+            else
+            {
+                btnReset.Visible = false;
+                resetIsVisible = false;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -43,7 +58,9 @@ namespace Focus_Timer
             timeS = 0;
             timeM = 0;
             timeH = 0;
+            timeEvents = new int[] { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
             drawTime();
+
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -57,6 +74,20 @@ namespace Focus_Timer
             isActive = false;
         }
 
+        //##############################################################
+        // Reset Button
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            isActive = false;
+            resetTime();
+            btnReset.Visible = false;
+            resetIsVisible = false;
+        }
+
+
+        //##############################################################
+        //Entfärben
+
         void unselectColor()
         {
             rdbLerning.BackColor = Color.Transparent;
@@ -67,40 +98,65 @@ namespace Focus_Timer
             rndSonstiges.BackColor = Color.Transparent;
         }
 
+        //##############################################################
+        // Radio Buttons
         private void rdbLerning_CheckedChanged(object sender, EventArgs e)
         {
-            currentTimeEvent = "Lernen";
+            // Coding 0-2  lerning 3-5  meeting 6-8  pause 9-11  sonstiges 12-14  orga 15-17
+            currentTimeStartIndex = 3;
+            //   currentTimeEvent = "lerning";
             unselectColor();
             rdbLerning.BackColor = Color.CadetBlue;
         }
 
         private void rndCoding_CheckedChanged(object sender, EventArgs e)
         {
-            currentTimeEvent = "Coden";
+            currentTimeStartIndex = 0;
+            //currentTimeEvent = "coding";
             unselectColor();
             rndCoding.BackColor = Color.CadetBlue;
         }
 
         private void rndOrga_CheckedChanged(object sender, EventArgs e)
         {
-            currentTimeEvent = "Orga";
+            // Coding 0-2  lerning 3-5  meeting 6-8  pause 9-11  sonstiges 12-14  orga 15-17
+            currentTimeStartIndex = 15;
+            // currentTimeEvent = "orga";
             unselectColor();
             rndOrga.BackColor = Color.CadetBlue;
         }
 
         private void rndSonstiges_CheckedChanged(object sender, EventArgs e)
         {
+            // Coding 0-2  lerning 3-5  meeting 6-8  pause 9-11  sonstiges 12-14  orga 15-17
+            currentTimeStartIndex = 12;
             unselectColor();
             rndSonstiges.BackColor = Color.CadetBlue;
-            currentTimeEvent = "Sonstiges";
+            //  currentTimeEvent = "sonstiges";
         }
 
-        private void btnReset_Click(object sender, EventArgs e)
+        private void rndPause_CheckedChanged(object sender, EventArgs e)
         {
-            isActive = false;
-            resetTime();
+            // Coding 0-2  lerning 3-5  meeting 6-8  pause 9-11  sonstiges 12-14  orga 15-17
+            currentTimeStartIndex = 9;
+            //   currentTimeEvent = "pause";
+            unselectColor();
+            rndPause.BackColor = Color.CadetBlue;
         }
 
+        private void rndMeeting_CheckedChanged(object sender, EventArgs e)
+        {
+            // Coding 0-2  lerning 3-5  meeting 6-8  pause 9-11  sonstiges 12-14  orga 15-17
+            currentTimeStartIndex = 6;
+            //   currentTimeEvent = "meeting";
+            unselectColor();
+            rndMeeting.BackColor = Color.CadetBlue;
+        }
+
+
+
+        //##############################################################
+        // Timer Tick
         private void timer1_Tick(object sender, EventArgs e)
         {
             if(isActive)
@@ -117,7 +173,23 @@ namespace Focus_Timer
                         timeM = 0;
                     }
                 }
+
+                // Array Incrementierung vom current event timer
+                timeEvents[currentTimeStartIndex] += 1;
+                if(timeEvents[currentTimeStartIndex] >= 60)
+                {
+                    timeEvents[currentTimeStartIndex + 1] += 1;
+                    timeEvents[currentTimeStartIndex] = 0;
+
+                    if(timeEvents[currentTimeStartIndex + 1] >= 60)
+                    {
+                        timeEvents[currentTimeStartIndex + 1] = 0;
+                        timeEvents[currentTimeStartIndex + 2] += 1;
+                    }
+                }
+
                 drawTime();
+
                 lblHr.BackColor = Color.Green;
                 lblMin.BackColor = Color.Green;
                 lblSec.BackColor = Color.Green;
@@ -130,26 +202,24 @@ namespace Focus_Timer
             }
         }
 
+        
+
+        //##############################################################
+        // Draw Time
         void drawTime()
         {
             lblHr.Text = String.Format("{0:00}", timeH);
             lblMin.Text = String.Format("{0:00}", timeM);
             lblSec.Text = String.Format("{0:00}", timeS);
+            lbl_coding.Text = "Coding: " +  String.Format("{0:00}", timeEvents[2]) + ":" + String.Format("{0:00}", timeEvents[1]) + ":" + String.Format("{0:00}", timeEvents[0]);
+            lbl_lerning.Text = "Lernen: " + String.Format("{0:00}", timeEvents[5]) + ":" + String.Format("{0:00}", timeEvents[4]) + ":" + String.Format("{0:00}", timeEvents[3]);
+            lbl_meeting.Text = "Meeting: " + String.Format("{0:00}", timeEvents[8]) + ":" + String.Format("{0:00}", timeEvents[7]) + ":" + String.Format("{0:00}", timeEvents[6]);
+            lbl_pause.Text = "Pause: " + String.Format("{0:00}", timeEvents[11]) + ":" + String.Format("{0:00}", timeEvents[10]) + ":" + String.Format("{0:00}", timeEvents[9]);
+            lbl_orga.Text = "Orga: " + String.Format("{0:00}", timeEvents[17]) + ":" + String.Format("{0:00}", timeEvents[16]) + ":" + String.Format("{0:00}", timeEvents[15]);
+            lbl_sonstiges.Text = "Sonstiges: " + String.Format("{0:00}", timeEvents[14]) + ":" + String.Format("{0:00}", timeEvents[13]) + ":" + String.Format("{0:00}", timeEvents[12]);
         }
 
-        private void rndPause_CheckedChanged(object sender, EventArgs e)
-        {
-            currentTimeEvent = "Pause";
-            unselectColor();
-            rndPause.BackColor = Color.CadetBlue;
-        }
 
-        private void rndMeeting_CheckedChanged(object sender, EventArgs e)
-        {
-            currentTimeEvent = "Meeting";
-            unselectColor();
-            rndMeeting.BackColor = Color.CadetBlue;
-        }
 
 
     }
