@@ -66,6 +66,14 @@ namespace Focus_Timer
             this.großToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kleinToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.großToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.hintergrundfarbeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hellblauToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.schwarzToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.grauToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dunkelgrünToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tealToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.midnightBlueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cornflowerBlueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -294,8 +302,9 @@ namespace Focus_Timer
             // beendenToolStripMenuItem
             // 
             this.beendenToolStripMenuItem.Name = "beendenToolStripMenuItem";
-            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.beendenToolStripMenuItem.Text = "Beenden";
+            this.beendenToolStripMenuItem.Click += new System.EventHandler(this.beendenToolStripMenuItem_Click);
             // 
             // einstellungenToolStripMenuItem
             // 
@@ -318,18 +327,24 @@ namespace Focus_Timer
             // 
             // einToolStripMenuItem
             // 
+            this.einToolStripMenuItem.Checked = true;
+            this.einToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.einToolStripMenuItem.Name = "einToolStripMenuItem";
-            this.einToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
+            this.einToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.einToolStripMenuItem.Text = "Ein";
+            this.einToolStripMenuItem.Click += new System.EventHandler(this.einToolStripMenuItem_Click);
             // 
             // ausToolStripMenuItem
             // 
             this.ausToolStripMenuItem.Name = "ausToolStripMenuItem";
-            this.ausToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
+            this.ausToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ausToolStripMenuItem.Text = "Aus";
+            this.ausToolStripMenuItem.Click += new System.EventHandler(this.ausToolStripMenuItem_Click);
             // 
             // designToolStripMenuItem
             // 
+            this.designToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hintergrundfarbeToolStripMenuItem});
             this.designToolStripMenuItem.Name = "designToolStripMenuItem";
             this.designToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.designToolStripMenuItem.Text = "Design";
@@ -452,6 +467,69 @@ namespace Focus_Timer
             this.großToolStripMenuItem1.Text = "Groß";
             this.großToolStripMenuItem1.Click += new System.EventHandler(this.großToolStripMenuItem1_Click);
             // 
+            // hintergrundfarbeToolStripMenuItem
+            // 
+            this.hintergrundfarbeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hellblauToolStripMenuItem,
+            this.schwarzToolStripMenuItem,
+            this.grauToolStripMenuItem,
+            this.dunkelgrünToolStripMenuItem,
+            this.tealToolStripMenuItem,
+            this.midnightBlueToolStripMenuItem,
+            this.cornflowerBlueToolStripMenuItem});
+            this.hintergrundfarbeToolStripMenuItem.Name = "hintergrundfarbeToolStripMenuItem";
+            this.hintergrundfarbeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hintergrundfarbeToolStripMenuItem.Text = "Hintergrundfarbe";
+            // 
+            // hellblauToolStripMenuItem
+            // 
+            this.hellblauToolStripMenuItem.Name = "hellblauToolStripMenuItem";
+            this.hellblauToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hellblauToolStripMenuItem.Text = "Hellblau";
+            this.hellblauToolStripMenuItem.Click += new System.EventHandler(this.hellblauToolStripMenuItem_Click);
+            // 
+            // schwarzToolStripMenuItem
+            // 
+            this.schwarzToolStripMenuItem.Name = "schwarzToolStripMenuItem";
+            this.schwarzToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.schwarzToolStripMenuItem.Text = "Schwarz";
+            this.schwarzToolStripMenuItem.Click += new System.EventHandler(this.schwarzToolStripMenuItem_Click);
+            // 
+            // grauToolStripMenuItem
+            // 
+            this.grauToolStripMenuItem.Name = "grauToolStripMenuItem";
+            this.grauToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.grauToolStripMenuItem.Text = "Grau";
+            this.grauToolStripMenuItem.Click += new System.EventHandler(this.grauToolStripMenuItem_Click);
+            // 
+            // dunkelgrünToolStripMenuItem
+            // 
+            this.dunkelgrünToolStripMenuItem.Name = "dunkelgrünToolStripMenuItem";
+            this.dunkelgrünToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dunkelgrünToolStripMenuItem.Text = "Dunkelgrün";
+            this.dunkelgrünToolStripMenuItem.Click += new System.EventHandler(this.dunkelgrünToolStripMenuItem_Click);
+            // 
+            // tealToolStripMenuItem
+            // 
+            this.tealToolStripMenuItem.Name = "tealToolStripMenuItem";
+            this.tealToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tealToolStripMenuItem.Text = "Teal";
+            this.tealToolStripMenuItem.Click += new System.EventHandler(this.tealToolStripMenuItem_Click);
+            // 
+            // midnightBlueToolStripMenuItem
+            // 
+            this.midnightBlueToolStripMenuItem.Name = "midnightBlueToolStripMenuItem";
+            this.midnightBlueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.midnightBlueToolStripMenuItem.Text = "MidnightBlue";
+            this.midnightBlueToolStripMenuItem.Click += new System.EventHandler(this.midnightBlueToolStripMenuItem_Click);
+            // 
+            // cornflowerBlueToolStripMenuItem
+            // 
+            this.cornflowerBlueToolStripMenuItem.Name = "cornflowerBlueToolStripMenuItem";
+            this.cornflowerBlueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cornflowerBlueToolStripMenuItem.Text = "CornflowerBlue";
+            this.cornflowerBlueToolStripMenuItem.Click += new System.EventHandler(this.cornflowerBlueToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -528,6 +606,14 @@ namespace Focus_Timer
         private System.Windows.Forms.ToolStripMenuItem großToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kleinToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem großToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem hintergrundfarbeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hellblauToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem schwarzToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem grauToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dunkelgrünToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tealToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem midnightBlueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cornflowerBlueToolStripMenuItem;
     }
 }
 

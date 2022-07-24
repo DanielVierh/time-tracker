@@ -103,6 +103,7 @@ namespace Focus_Timer
             currentTimeStartIndex = 3;
             unselectColor();
             rdbLerning.BackColor = Color.CadetBlue;
+            this.Text = "Focus Timer - Lernen";
         }
 
         private void rndCoding_CheckedChanged(object sender, EventArgs e)
@@ -110,6 +111,7 @@ namespace Focus_Timer
             currentTimeStartIndex = 0;
             unselectColor();
             rndCoding.BackColor = Color.CadetBlue;
+            this.Text = "Focus Timer - Coden";
         }
 
         private void rndOrga_CheckedChanged(object sender, EventArgs e)
@@ -117,6 +119,7 @@ namespace Focus_Timer
             currentTimeStartIndex = 15;
             unselectColor();
             rndOrga.BackColor = Color.CadetBlue;
+            this.Text = "Focus Timer - Organisieren";
         }
 
         private void rndSonstiges_CheckedChanged(object sender, EventArgs e)
@@ -124,6 +127,7 @@ namespace Focus_Timer
             currentTimeStartIndex = 12;
             unselectColor();
             rndSonstiges.BackColor = Color.CadetBlue;
+            this.Text = "Focus Timer - Sonstiges";
         }
 
         private void rndPause_CheckedChanged(object sender, EventArgs e)
@@ -131,6 +135,7 @@ namespace Focus_Timer
             currentTimeStartIndex = 9;
             unselectColor();
             rndPause.BackColor = Color.CadetBlue;
+            this.Text = "Focus Timer - Pause";
         }
 
         private void rndMeeting_CheckedChanged(object sender, EventArgs e)
@@ -138,6 +143,7 @@ namespace Focus_Timer
             currentTimeStartIndex = 6;
             unselectColor();
             rndMeeting.BackColor = Color.CadetBlue;
+            this.Text = "Focus Timer - Meeting";
         }
 
         private void großToolStripMenuItem_Click(object sender, EventArgs e)
@@ -163,6 +169,7 @@ namespace Focus_Timer
                 this.btnStart.Location = new Point(this.btnStart.Location.X - 111, this.btnStart.Location.Y - 12);
                 this.btnPause.Location = new Point(this.btnPause.Location.X - 111, this.btnPause.Location.Y - 12);
                 this.Size = new Size(300, 150);
+                this.SetDesktopLocation(0,0); // Setzt das Fenster in die obere linke ecke
             }
         }
 
@@ -285,6 +292,60 @@ namespace Focus_Timer
         private void lblSec_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void beendenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void einToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.TopMost = true;
+            ausToolStripMenuItem.Checked = false;
+            einToolStripMenuItem.Checked = true;
+        }
+
+        private void ausToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.TopMost = false;
+            einToolStripMenuItem.Checked = false;
+            ausToolStripMenuItem.Checked = true;
+        }
+
+        private void hellblauToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.RoyalBlue;
+        }
+
+        private void schwarzToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Black;
+        }
+
+        private void grauToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.DarkSlateGray;
+        }
+
+        private void dunkelgrünToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.DarkOliveGreen;
+        }
+
+        private void tealToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Teal;
+        }
+
+        private void midnightBlueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.MidnightBlue;
+        }
+
+        private void cornflowerBlueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.CornflowerBlue;
         }
 
         private void lblMin_Click(object sender, EventArgs e)
