@@ -17,7 +17,7 @@ namespace Focus_Timer
         //##############################################################
         // Globale Variablen
         // Coding 0-2  lerning 3-5  meeting 6-8  pause 9-11  sonstiges 12-14  orga 15-17
-        int[] timeEvents = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+        int[] timeEvents = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         int currentTimeStartIndex;
         int timeS, timeM, timeH;
         bool isActive;
@@ -32,7 +32,7 @@ namespace Focus_Timer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(resetIsVisible == false)
+            if (resetIsVisible == false)
             {
                 btnReset.Visible = true;
                 resetIsVisible = true;
@@ -48,6 +48,10 @@ namespace Focus_Timer
         {
             resetTime();
             isActive = false;
+
+            rndCoding.Checked = true;
+            uncheckEventMenueItems();
+            codenToolStripMenuItem.Checked = true;
         }
 
         void resetTime()
@@ -55,7 +59,7 @@ namespace Focus_Timer
             timeS = 0;
             timeM = 0;
             timeH = 0;
-            timeEvents = new int[] { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+            timeEvents = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
             drawTime();
 
         }
@@ -100,50 +104,38 @@ namespace Focus_Timer
         private void rdbLerning_CheckedChanged(object sender, EventArgs e)
         {
             // Coding 0-2  lerning 3-5  meeting 6-8  pause 9-11  sonstiges 12-14  orga 15-17
-            currentTimeStartIndex = 3;
-            unselectColor();
+            SetEvent("Lernen", 3);
             rdbLerning.BackColor = Color.CadetBlue;
-            this.Text = "Focus Timer - Lernen";
         }
 
         private void rndCoding_CheckedChanged(object sender, EventArgs e)
         {
-            currentTimeStartIndex = 0;
-            unselectColor();
+            SetEvent("Coden", 0);
             rndCoding.BackColor = Color.CadetBlue;
-            this.Text = "Focus Timer - Coden";
         }
 
         private void rndOrga_CheckedChanged(object sender, EventArgs e)
         {
-            currentTimeStartIndex = 15;
-            unselectColor();
+            SetEvent("Organisieren", 15);
             rndOrga.BackColor = Color.CadetBlue;
-            this.Text = "Focus Timer - Organisieren";
         }
 
         private void rndSonstiges_CheckedChanged(object sender, EventArgs e)
         {
-            currentTimeStartIndex = 12;
-            unselectColor();
+            SetEvent("Sonstiges", 12);
             rndSonstiges.BackColor = Color.CadetBlue;
-            this.Text = "Focus Timer - Sonstiges";
         }
 
         private void rndPause_CheckedChanged(object sender, EventArgs e)
         {
-            currentTimeStartIndex = 9;
-            unselectColor();
+            SetEvent("Pause", 9);
             rndPause.BackColor = Color.CadetBlue;
-            this.Text = "Focus Timer - Pause";
         }
 
         private void rndMeeting_CheckedChanged(object sender, EventArgs e)
         {
-            currentTimeStartIndex = 6;
-            unselectColor();
+            SetEvent("Meeting", 6);
             rndMeeting.BackColor = Color.CadetBlue;
-            this.Text = "Focus Timer - Meeting";
         }
 
         private void großToolStripMenuItem_Click(object sender, EventArgs e)
@@ -267,33 +259,6 @@ namespace Focus_Timer
             lbl_sonstiges.Text = "Sonstiges: " + String.Format("{0:00}", timeEvents[14]) + ":" + String.Format("{0:00}", timeEvents[13]) + ":" + String.Format("{0:00}", timeEvents[12]);
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-        private void lblHr_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblSec_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void beendenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -348,18 +313,69 @@ namespace Focus_Timer
             this.BackColor = Color.CornflowerBlue;
         }
 
-        private void lblMin_Click(object sender, EventArgs e)
+        // Menübutton Event
+        private void lernenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            uncheckEventMenueItems();
+            lernenToolStripMenuItem.Checked = true;
+            rdbLerning.Checked = true;
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void codenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            rndCoding.Checked = true;
+            uncheckEventMenueItems();
+            codenToolStripMenuItem.Checked = true;
         }
 
+        private void organisiernToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rndOrga.Checked = true;
+            uncheckEventMenueItems();
+            organisiernToolStripMenuItem.Checked = true;
+        }
 
+        private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rndPause.Checked = true;
+            uncheckEventMenueItems();
+            pauseToolStripMenuItem.Checked = true;
+        }
+
+        private void meetingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rndMeeting.Checked = true;
+            uncheckEventMenueItems();
+            meetingToolStripMenuItem.Checked = true;
+        }
+
+        private void sonstigesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rndSonstiges.Checked = true;
+            uncheckEventMenueItems();
+            sonstigesToolStripMenuItem.Checked = true;
+        }
+
+        void SetEvent(string evnt, int strtIndx)
+        {
+            // Coding 0-2  lerning 3-5  meeting 6-8  pause 9-11  sonstiges 12-14  orga 15-17
+            currentTimeStartIndex = strtIndx;
+            unselectColor();
+            this.Text = "Focus Timer - " + evnt;
+        }
+
+        void uncheckEventMenueItems()
+        {
+            codenToolStripMenuItem.Checked = false;
+            lernenToolStripMenuItem.Checked = false;
+            sonstigesToolStripMenuItem.Checked = false;
+            meetingToolStripMenuItem.Checked = false;
+            organisiernToolStripMenuItem.Checked = false;
+            pauseToolStripMenuItem.Checked = false;
+        }
 
 
     }
+
+
 }
