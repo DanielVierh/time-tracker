@@ -106,36 +106,48 @@ namespace Focus_Timer
             // Coding 0-2  lerning 3-5  meeting 6-8  pause 9-11  sonstiges 12-14  orga 15-17
             SetEvent("Lernen", 3);
             rdbLerning.BackColor = Color.CadetBlue;
+            uncheckEventMenueItems();
+            lernenToolStripMenuItem.Checked = true;
         }
 
         private void rndCoding_CheckedChanged(object sender, EventArgs e)
         {
             SetEvent("Coden", 0);
             rndCoding.BackColor = Color.CadetBlue;
+            uncheckEventMenueItems();
+            codenToolStripMenuItem.Checked = true;
         }
 
         private void rndOrga_CheckedChanged(object sender, EventArgs e)
         {
             SetEvent("Organisieren", 15);
             rndOrga.BackColor = Color.CadetBlue;
+            uncheckEventMenueItems();
+            organisiernToolStripMenuItem.Checked = true;
         }
 
         private void rndSonstiges_CheckedChanged(object sender, EventArgs e)
         {
             SetEvent("Sonstiges", 12);
             rndSonstiges.BackColor = Color.CadetBlue;
+            uncheckEventMenueItems();
+            sonstigesToolStripMenuItem.Checked = true;
         }
 
         private void rndPause_CheckedChanged(object sender, EventArgs e)
         {
             SetEvent("Pause", 9);
             rndPause.BackColor = Color.CadetBlue;
+            uncheckEventMenueItems();
+            pauseToolStripMenuItem.Checked = true;
         }
 
         private void rndMeeting_CheckedChanged(object sender, EventArgs e)
         {
             SetEvent("Meeting", 6);
             rndMeeting.BackColor = Color.CadetBlue;
+            uncheckEventMenueItems();
+            meetingToolStripMenuItem.Checked = true;
         }
 
         private void großToolStripMenuItem_Click(object sender, EventArgs e)
