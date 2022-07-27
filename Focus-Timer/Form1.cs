@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.Drawing.Imaging;
 
 namespace Focus_Timer
 {
@@ -354,6 +355,27 @@ namespace Focus_Timer
         private void sonstigesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             rndSonstiges.Checked = true;
+        }
+
+        private void screenshotToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Rectangle bounds = this.Bounds;
+            using (Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height))
+            {
+                using (Graphics g = Graphics.FromImage(bitmap))
+                {
+                    g.CopyFromScreen(new Point(bounds.Left, bounds.Top), Point.Empty, bounds.Size);
+                }
+                // System.Reflection.Assembly.GetExecutingAssembly().Location
+                
+                DateTime thisDay = DateTime.Today;
+                string imageName = "/Results/Ergebnis_" + thisDay.ToString("D") + ".jpg";
+                string pathName = Application.StartupPath + imageName;
+                bitmap.Save(pathName, ImageFormat.Jpeg);
+                MessageBox.Show("Gespeichert unter: " + pathName);
+                //bitmap.Save("D:/Neuer Ordner/test.jpg", ImageFormat.Jpeg);
+            }
+
         }
 
         void SetEvent(string evnt, int strtIndx)

@@ -72,6 +72,8 @@ namespace Focus_Timer
             this.pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.meetingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sonstigesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bearbeitenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.screenshotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbl_meeting = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblMin = new System.Windows.Forms.Label();
@@ -278,14 +280,17 @@ namespace Focus_Timer
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.SlateGray;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.einstellungenToolStripMenuItem,
             this.kleinToolStripMenuItem1,
             this.großToolStripMenuItem1,
-            this.eventToolStripMenuItem});
+            this.eventToolStripMenuItem,
+            this.bearbeitenToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(485, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(502, 24);
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -296,7 +301,7 @@ namespace Focus_Timer
             this.designToolStripMenuItem,
             this.verkleinernToolStripMenuItem});
             this.einstellungenToolStripMenuItem.Name = "einstellungenToolStripMenuItem";
-            this.einstellungenToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
+            this.einstellungenToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
             this.einstellungenToolStripMenuItem.Text = "Einstellungen";
             // 
             // imVordergrundToolStripMenuItem
@@ -421,14 +426,14 @@ namespace Focus_Timer
             // kleinToolStripMenuItem1
             // 
             this.kleinToolStripMenuItem1.Name = "kleinToolStripMenuItem1";
-            this.kleinToolStripMenuItem1.Size = new System.Drawing.Size(47, 20);
+            this.kleinToolStripMenuItem1.Size = new System.Drawing.Size(47, 22);
             this.kleinToolStripMenuItem1.Text = "Klein";
             this.kleinToolStripMenuItem1.Click += new System.EventHandler(this.kleinToolStripMenuItem1_Click);
             // 
             // großToolStripMenuItem1
             // 
             this.großToolStripMenuItem1.Name = "großToolStripMenuItem1";
-            this.großToolStripMenuItem1.Size = new System.Drawing.Size(48, 20);
+            this.großToolStripMenuItem1.Size = new System.Drawing.Size(48, 22);
             this.großToolStripMenuItem1.Text = "Groß";
             this.großToolStripMenuItem1.Click += new System.EventHandler(this.großToolStripMenuItem1_Click);
             // 
@@ -442,7 +447,7 @@ namespace Focus_Timer
             this.meetingToolStripMenuItem,
             this.sonstigesToolStripMenuItem});
             this.eventToolStripMenuItem.Name = "eventToolStripMenuItem";
-            this.eventToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.eventToolStripMenuItem.Size = new System.Drawing.Size(51, 22);
             this.eventToolStripMenuItem.Text = "Event";
             // 
             // lernenToolStripMenuItem
@@ -486,6 +491,21 @@ namespace Focus_Timer
             this.sonstigesToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.sonstigesToolStripMenuItem.Text = "Sonstiges";
             this.sonstigesToolStripMenuItem.Click += new System.EventHandler(this.sonstigesToolStripMenuItem_Click);
+            // 
+            // bearbeitenToolStripMenuItem
+            // 
+            this.bearbeitenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.screenshotToolStripMenuItem});
+            this.bearbeitenToolStripMenuItem.Name = "bearbeitenToolStripMenuItem";
+            this.bearbeitenToolStripMenuItem.Size = new System.Drawing.Size(81, 22);
+            this.bearbeitenToolStripMenuItem.Text = "Bearbeiten";
+            // 
+            // screenshotToolStripMenuItem
+            // 
+            this.screenshotToolStripMenuItem.Name = "screenshotToolStripMenuItem";
+            this.screenshotToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.screenshotToolStripMenuItem.Text = "Screenshot";
+            this.screenshotToolStripMenuItem.Click += new System.EventHandler(this.screenshotToolStripMenuItem_Click);
             // 
             // lbl_meeting
             // 
@@ -569,7 +589,7 @@ namespace Focus_Timer
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
-            this.ClientSize = new System.Drawing.Size(485, 347);
+            this.ClientSize = new System.Drawing.Size(502, 347);
             this.Controls.Add(this.btnInitReset);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -653,6 +673,8 @@ namespace Focus_Timer
         private System.Windows.Forms.ToolStripMenuItem pauseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem meetingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sonstigesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bearbeitenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem screenshotToolStripMenuItem;
     }
 }
 
