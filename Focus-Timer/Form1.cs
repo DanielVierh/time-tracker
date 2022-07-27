@@ -328,44 +328,32 @@ namespace Focus_Timer
         // Menübutton Event
         private void lernenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            uncheckEventMenueItems();
-            lernenToolStripMenuItem.Checked = true;
             rdbLerning.Checked = true;
         }
 
         private void codenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             rndCoding.Checked = true;
-            uncheckEventMenueItems();
-            codenToolStripMenuItem.Checked = true;
         }
 
         private void organisiernToolStripMenuItem_Click(object sender, EventArgs e)
         {
             rndOrga.Checked = true;
-            uncheckEventMenueItems();
-            organisiernToolStripMenuItem.Checked = true;
         }
 
         private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             rndPause.Checked = true;
-            uncheckEventMenueItems();
-            pauseToolStripMenuItem.Checked = true;
         }
 
         private void meetingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             rndMeeting.Checked = true;
-            uncheckEventMenueItems();
-            meetingToolStripMenuItem.Checked = true;
         }
 
         private void sonstigesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             rndSonstiges.Checked = true;
-            uncheckEventMenueItems();
-            sonstigesToolStripMenuItem.Checked = true;
         }
 
         void SetEvent(string evnt, int strtIndx)
