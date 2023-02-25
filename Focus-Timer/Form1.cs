@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using System.Drawing.Imaging;
+using System.IO;
 
 namespace Focus_Timer
 {
-
+    // datastream.txt
     public partial class Form1 : Form
     {
         //##############################################################
@@ -53,6 +54,7 @@ namespace Focus_Timer
             rndCoding.Checked = true;
             uncheckEventMenueItems();
             codenToolStripMenuItem.Checked = true;
+            readDataStream();
         }
 
         void resetTime()
@@ -206,6 +208,21 @@ namespace Focus_Timer
             makeWindowBig();
         }
 
+        // Function to read a textfile. Used to store information permanently
+        private void readDataStream()
+        {
+            string saveFilePath = Application.StartupPath + @"\datastream.txt";
+            lbl_coding.Text = String.Format("{0:00}", Application.StartupPath);
+            StreamReader sr = new StreamReader(saveFilePath);
+            Console.WriteLine(sr.ReadToEnd());
+            sr.Close();
+        }
+        
+
+        private void writeDataStream()
+        {
+
+        }
 
 
         //##############################################################
